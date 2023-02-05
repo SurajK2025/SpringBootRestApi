@@ -23,7 +23,6 @@ public class Note extends BaseEntity{
 	
 	@ManyToOne
 	@JoinColumn(name = "user_Id")
-	@JsonProperty(access = Access.READ_ONLY)
 	private User user;
 	
 	public User getUser() {
