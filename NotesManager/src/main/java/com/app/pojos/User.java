@@ -28,6 +28,11 @@ public class User extends BaseEntity{
 	fetch=FetchType.LAZY, orphanRemoval = true)
 	private List<Note> notes = new ArrayList<>();
 
+	public void addNote(Note note) {
+		notes.add(note);
+		note.setUser(this);
+	}
+	
 	public String getName() {
 		return name;
 	}

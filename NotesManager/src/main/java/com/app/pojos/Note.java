@@ -9,6 +9,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 @Table(name = "notes")
 public class Note extends BaseEntity{
@@ -20,7 +23,16 @@ public class Note extends BaseEntity{
 	
 	@ManyToOne
 	@JoinColumn(name = "user_Id")
+	@JsonProperty(access = Access.READ_ONLY)
 	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public String getTitle() {
 		return title;
